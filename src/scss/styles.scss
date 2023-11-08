@@ -1,0 +1,26 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+);
+$border-color:$secondary;
+
+// Required
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+
+
+body{
+    background-color: $gray-400;
+}

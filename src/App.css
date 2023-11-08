@@ -1,0 +1,41 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+.App {
+  width: 500px;
+  margin: 0 auto;
+}
+
+ol div {
+  padding: 2.5px 0.5rem 2.5px 1.5rem;
+  box-shadow: 2px 2px 1px gray;
+}
+ol div:hover {
+  background: #fff !important;
+}
+
+.board-row {
+  height: auto;
+  display: flex;
+  gap: 1px;
+}
+
+.square {
+  background-color: #fff;
+  border: none;
+  font-size: 26px;
+  font-weight: 600;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+}
+.square:focus {
+  outline: 0;
+}
+.square:hover {
+  background: #efefef;
+}
