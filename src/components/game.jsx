@@ -4,6 +4,8 @@ import Board from "./board";
 const initilArr = Array(9).fill(null);
 
 function calculateWinner(s) {
+  // takes an array of 9 elements representing the board of the game as input and return true or false
+  // define the winner between X and O
   let cases = [
     [0, 1, 2],
     [3, 4, 5],
@@ -16,6 +18,7 @@ function calculateWinner(s) {
   ];
 
   function isWinner(p) {
+    // match with the winning cases from the case array and return true or false indicating winner or not winner respectively
     let indicesOf_p = s.map((e, i) => {
       if (e === p) {
         return i;
@@ -42,7 +45,9 @@ class Game extends React.Component {
   currentSquares = initilArr;
 
   handleClick = (i) => {
+    // update the state according to every click on any block of board
     if (this.state.history.slice(1).length > this.state.stepNumber) {
+      //if any history button from ordered list (ex: Go to move #3) clicked then this block will allow this handleClick function to alter the value of any already clicked block
       this.state.history = this.state.history.slice(
         0,
         this.state.stepNumber + 1
@@ -53,6 +58,7 @@ class Game extends React.Component {
     let { stepNumber, xIsNext } = this.state;
 
     if (calculateWinner(squares) || squares[i]) {
+      // if the winner is already selected or click on the already clicked block this handleclick function don't update the state.
       return;
     }
 
@@ -66,6 +72,7 @@ class Game extends React.Component {
   };
 
   handleStart = () => {
+    // make the board empty and start the game
     this.currentSquares = initilArr;
     this.setState({
       history: [{ squares: initilArr }],
@@ -75,6 +82,7 @@ class Game extends React.Component {
   };
 
   handleHistory = (e, n) => {
+    // show previous moves
     this.currentSquares = e.squares;
     this.setState({ stepNumber: n, xIsNext: n % 2 ? false : true });
   };
@@ -83,10 +91,12 @@ class Game extends React.Component {
     return (
       <div className="d-flex flex-wrap flex-row column-gap-4">
         <div className="mt-2">
+          {/* show a square shaped white board with 9 blocks */}
           <Board squares={this.currentSquares} onClick={this.handleClick} />
         </div>
         <div>
           <p className="fs-5 fw-semibold">
+            {/* show who is next and the result of game */}
             {(() => {
               if (calculateWinner(this.currentSquares)) {
                 return `Winner is ${this.state.xIsNext ? "O" : "X"}`;
@@ -109,6 +119,7 @@ class Game extends React.Component {
               Go to game start
             </div>
 
+            {/* show  list of previous moves */}
             {this.state.history.slice(1).map((e, i) => {
               if (e !== null) {
                 return (
